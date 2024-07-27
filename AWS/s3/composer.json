@@ -1,0 +1,13 @@
+{
+    "name": "tienlm/s3",
+    "authors": [
+        {
+            "name": "letien-kimei",
+            "email": "tienlm@kimei.vn"
+        }
+    ],
+    "require": {
+        "aws/aws-sdk-php": "^3.231",
+        "vlucas/phpdotenv": "^4.2"
+    }
+}
