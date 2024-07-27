@@ -1,0 +1,17 @@
+# chạy php/apache
+---------------------------------------------------------
+truy cập container: docker run -it --rm "image name" sh , khi run sẽ chạy 2 công việc sau
+   - Khởi chạy một container mới từ image được chỉ định.
+   - Truy cập vào shell của container, sử dụng sh (shell) trong trường hợp này.
+
+dùng: ls / (để xem các folder/file mặc định của container: bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var)
+*dấu . là đại diện cho thư mục hiện tại
+
+# Xây dựng image PHP 
+docker build -t app-php -f Dockerfile-php  .
+
+# Xây dựng image APACHE 
+docker build -t app-apache -f Dockerfile-apache .
+
+# Chạy container
+docker run --rm php-app-2

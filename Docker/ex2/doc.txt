@@ -1,0 +1,7 @@
+# chạy docker với tên file khác, ở đây là Dockerfile-php
+---------------------------------------------------------
+# Xây dựng image Docker , dấu . là đại diện cho thư mục hiện tại
+docker build -t php-app-2 -f Dockerfile-php .
+
+# Chạy container
+docker run --rm php-app-2

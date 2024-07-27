@@ -1,0 +1,13 @@
+https://docs.docker.com/guides/workshop/02_our_app/
+
+docker build -t getting-started .
+
+docker volume create todo-db
+
+docker run -dp 127.0.0.1:3000:3000 --mount type=volume,src=todo-db,target=//etc/todos getting-started
+
+docker volume inspect todo-db
+
+docker exec -it priceless_kilby sh
+
+view: 127.0.0.1:3000

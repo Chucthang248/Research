@@ -1,0 +1,14 @@
+# Sử dụng image Apache chính thức
+FROM httpd:latest
+
+# Sao chép mã nguồn PHP vào thư mục web của Apache
+COPY . /usr/local/apache2/htdocs/
+
+# Cấu hình Apache
+COPY apache-config.conf /usr/local/apache2/conf/httpd.conf
+
+# Mở cổng 8004
+EXPOSE 8004
+
+# Khởi động Apache
+CMD ["httpd-foreground"]

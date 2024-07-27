@@ -1,0 +1,5 @@
+# Xây dựng image Docker
+docker build -t my-php-app .
+
+# Chạy container
+docker run --rm my-php-app
