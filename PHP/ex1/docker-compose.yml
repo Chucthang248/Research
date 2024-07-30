@@ -9,16 +9,16 @@ services:
       - ./:/usr/src/myapp
     networks:
       - my-network
-    # command: sh -c "php ./public-html/index.php && tail -f /dev/null"
+    #command: sh -c "php ./public-html/index.php && tail -f /dev/null"
 
-  # apache-ex1:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile-apache
-  #   ports:
-  #     - "8024:80"
-  #   networks:
-  #     - my-network
+  apache-ex1:
+    build:
+      context: .
+      dockerfile: Dockerfile-apache
+    ports:
+      - "8024:80"
+    networks:
+      - my-network
 
 networks:
   my-network:

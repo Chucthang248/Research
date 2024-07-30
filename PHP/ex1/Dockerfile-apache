@@ -1,14 +1,26 @@
 # Sử dụng image Apache chính thức
 FROM httpd:latest
 
-# Sao chép mã nguồn PHP vào thư mục web của Apache
-COPY . /usr/local/apache2/htdocs/
+# Cài đặt PHP và các module Apache cần thiết
+RUN apt-get update && \
+    apt-get install -y \
+    php \
+    libapache2-mod-php \
+    && rm -rf /var/lib/apt/lists/*
 
-# Cấu hình Apache
+# Sao chép mã nguồn PHP vào thư mục web của Apache
+COPY ./public-html/ /usr/local/apache2/htdocs/
 COPY apache-config.conf /usr/local/apache2/conf/httpd.conf
 
-# Mở cổng 8096
-EXPOSE 8096
+# Thêm cấu hình để Apache xử lý các file PHP
+RUN echo "\
+<FilesMatch \.php$>\n\
+    SetHandler application/x-httpd-php\n\
+</FilesMatch>\n\
+" >> /usr/local/apache2/conf/httpd.conf
+
+# Mở cổng 80
+EXPOSE 80
 
 # Khởi động Apache
 CMD ["httpd-foreground"]
