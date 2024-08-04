@@ -1,0 +1,31 @@
+excercise: https://www.codewars.com/kata/object-oriented-php-number-2-class-constructors-and-$this
+roadmap: https://dev.to/roadmaps/senior-php-developer-skillset-3jnc
+https://docs.docker.com/build/building/best-practices/
+
+h: trường hợp không thể chạy container nhưng đã build image, thì làm sao để xem các file đã được bỏ vào /usr/src/myapp hay chưa ?
+tl: 
+  Bước 1: Tìm ID hoặc tên của image đã build
+    Sử dụng lệnh docker images để liệt kê các image hiện có và tìm ID hoặc tên của image bạn đã build.
+
+    docker images
+
+  Bước 2: Khởi chạy một container tạm thời từ image đó
+    docker run -it --rm ex1-apache-ex1 /bin/sh
+
+  Bước 3: Kiểm tra nội dung thư mục
+    ls -l /usr/src/myapp
+
+
+    -----------------------------------------------------
+    https://hub.docker.com/layers/library/php/apache/images/sha256-d69bd48ac255ad5b45f969c611b0dbce15d06ab0c886a25d01f91c90cba63306?context=explore
+    xem image layer sẽ thấy cấu hình thư mục , ví dụ : ENV APACHE_CONFDIR=/etc/apache2
+    trong container docker chạy lệnh d $APACHE_CONFDIR sẽ truy cập vào folder /etc/apache2
+
+    tìm kiếm đường dẫn đến file đó (trong container): find / -name "apache2.conf" 2>/dev/null
+
+    ----------------------------------------------------
+    sao chép file từ container ra host, và khi chỉnh sửa file đó ở host nó sẽ cập nhật trong container khi build 
+    vd: 
+      1. docker run --name temp-container php:apache
+      2. docker cp temp-container:/etc/apache2/sites-available/000-default.conf conf/000-default.conf
+      3. docker rm -f temp-container

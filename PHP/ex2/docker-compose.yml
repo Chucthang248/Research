@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  php-apache-ex2:
+  web-ex2:
     build:
       context: .
       dockerfile: Dockerfile
-    networks:
-      - my-network
-
-networks:
-  my-network:
+    volumes:
+      - ./src:/var/www/html
+      # - ./conf/apache2.conf:/etc/apache2/apache2.conf
+    ports:
+      - "8099:80"
