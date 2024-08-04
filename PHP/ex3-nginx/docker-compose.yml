@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web-ex2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www/html
+      # - ./conf/apache2.conf:/etc/apache2/apache2.conf
+    ports:
+      - "8099:80"

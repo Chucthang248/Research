@@ -16,16 +16,18 @@ tl:
     ls -l /usr/src/myapp
 
 
-    -----------------------------------------------------
+    ------------------------------------------------------ APACHE -----------------------------------------------------------------------------
     https://hub.docker.com/layers/library/php/apache/images/sha256-d69bd48ac255ad5b45f969c611b0dbce15d06ab0c886a25d01f91c90cba63306?context=explore
     xem image layer sẽ thấy cấu hình thư mục , ví dụ : ENV APACHE_CONFDIR=/etc/apache2
     trong container docker chạy lệnh d $APACHE_CONFDIR sẽ truy cập vào folder /etc/apache2
 
     tìm kiếm đường dẫn đến file đó (trong container): find / -name "apache2.conf" 2>/dev/null
 
-    ----------------------------------------------------
     sao chép file từ container ra host, và khi chỉnh sửa file đó ở host nó sẽ cập nhật trong container khi build 
     vd: 
       1. docker run --name temp-container php:apache
       2. docker cp temp-container:/etc/apache2/sites-available/000-default.conf conf/000-default.conf
       3. docker rm -f temp-container
+
+    ------------------------------------------------------ NGINX -----------------------------------------------------------------------------
+    doc: https://hub.docker.com/r/trafex/php-nginx
