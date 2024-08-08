@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web-eng:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8828:3000"
+    depends_on:
+      - db-eng
+    environment:
+      - DATABASE_HOST=db-eng
+      - DATABASE_USER=engproject
+      - DATABASE_PASSWORD=engproject
+      - DATABASE_NAME=engproject
+
+  db-eng:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: engproject
+      MYSQL_DATABASE: engproject
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  adminer-eng:
+    image: adminer
+    ports:
+      - "8829:8080"
+
+volumes:
+  db-data:

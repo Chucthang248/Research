@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS engproject;
+
+CREATE USER IF NOT EXISTS 'engproject'@'%' IDENTIFIED BY 'engproject';
+GRANT ALL PRIVILEGES ON engproject.* TO 'engproject'@'%';
+FLUSH PRIVILEGES;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+INSERT INTO users (name) VALUES ('John Doe'), ('Jane Doe');
