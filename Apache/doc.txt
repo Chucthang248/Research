@@ -1,2 +1,4 @@
 dowload: https://www.apachelounge.com/download/#google_vignette
 structure: https://www.devopsschool.com/blog/directory-structure-of-apache-web-server/
+https://httpd.apache.org/docs/current/mod/core.html#serverroot
+vituarl host: https://httpd.apache.org/docs/current/vhosts/
