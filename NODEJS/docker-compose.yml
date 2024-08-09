@@ -5,13 +5,15 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
+    volumes:
+      - ./server/migrates:/usr/src/app/migrates
     ports:
       - "8828:3000"
     depends_on:
       - db-eng
     environment:
       - DATABASE_HOST=db-eng
-      - DATABASE_USER=engproject
+      - DATABASE_USER=root
       - DATABASE_PASSWORD=engproject
       - DATABASE_NAME=engproject
 
