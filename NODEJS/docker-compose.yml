@@ -10,21 +10,23 @@ services:
     ports:
       - "8828:3000"
     depends_on:
-      - db-eng
+      - dbeng
     environment:
-      - DATABASE_HOST=db-eng
-      - DATABASE_USER=root
-      - DATABASE_PASSWORD=engproject
-      - DATABASE_NAME=engproject
+      - DATABASE_HOST=dbeng
+      - DATABASE_USER=user1
+      - DATABASE_PASSWORD=english
+      - DATABASE_NAME=englishex
 
-  db-eng:
+  dbeng:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: engproject
-      MYSQL_DATABASE: engproject
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: english
+      MYSQL_ROOT_PASSWORD: rooteng
+      MYSQL_DATABASE: englishex
     volumes:
-      - db-data:/var/lib/mysql
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+        - ./db-data:/var/lib/mysql #lưu lại dữ liệu khi docker compose down
+        # - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   adminer-eng:
     image: adminer
