@@ -8,6 +8,8 @@ COPY package*.json ./
 
 RUN npm install
 
+RUN npm install knex -g
+
 # Bundle app source
 COPY . .
 

@@ -1,5 +1,0 @@
-mysql: https://hub.docker.com/_/mysql
-knex migrate database: https://knexjs.org/ 
-1. npm install knex sqlite3
-2. npx knex init
-3. npx knex migrate:make migration_name

@@ -8,16 +8,10 @@ module.exports = {
   development: {
     client: 'mysql',
     connection: {
-      database: process.env.DATABASE_NAME,
+      host: 'dbeng',
       user:     process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME
     }
   },
 
