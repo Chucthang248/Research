@@ -1,12 +1,20 @@
 const express = require('express');
-const userRoutes = require('./routes/userRoutes');
+const path = require('path');
+const homeController = require('./controllers/homeController');
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
-app.use('/users', userRoutes);
+console.log('==================================')
+console.log(path.join(__dirname, 'views'))
+// Set view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.listen(port, () => {
-  console.log(`App running at http://localhost:${port}`);
+// Routes
+app.get('/', homeController.renderHomePage);
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

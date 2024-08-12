@@ -6,7 +6,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     volumes:
-      - ./server/migrates:/usr/src/app/migrates
+      - ./server:/usr/src/app
     ports:
       - "8828:3000"
     depends_on:

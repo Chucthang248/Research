@@ -1,15 +1,17 @@
 {
-    "name": "node-nginx-mysql-app",
-    "version": "1.0.0",
-    "description": "A simple Node.js app with Nginx and MySQL",
-    "main": "app.js",
-    "scripts": {
-      "start": "node app.js"
-    },
-    "dependencies": {
-      "ejs": "3.1.10",
-      "knex": "3.1.0",
-      "express": "^4.17.1",
-      "mysql": "^2.18.1"
-    }
+  "name": "node-nginx-mysql-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js app with Nginx and MySQL",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "openai": "4.55.4",
+    "dotenv": "16.4.5",
+    "ejs": "3.1.10",
+    "knex": "3.1.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
   }
+}

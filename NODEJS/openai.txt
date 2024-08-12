@@ -1,1 +1,15 @@
 https://platform.openai.com/docs/models/how-we-use-your-data
+https://platform.openai.com/docs/api-reference/completions/create
+model list: https://platform.openai.com/docs/api-reference/models/list
+api pricing: https://openai.com/api/pricing/
+
+auth: https://platform.openai.com/docs/api-reference/introduction
+
+Legacy Completions: https://platform.openai.com/docs/guides/text-generation/text-generation-models
+                    https://platform.openai.com/docs/api-reference/completions/create
+
+Legacy Assistant:  https://platform.openai.com/docs/assistants/overview
+                   https://platform.openai.com/docs/api-reference/threads-v1/createThread
+
+Legacy Threads: https://platform.openai.com/docs/assistants/overview
+                https://platform.openai.com/docs/api-reference/threads-v1/createThread

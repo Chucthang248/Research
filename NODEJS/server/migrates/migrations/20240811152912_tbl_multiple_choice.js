@@ -9,7 +9,7 @@ exports.up = function(knex) {
       table.integer('category_id', 255);
       table.text('question').notNullable();
       table.text('answer').notNullable();
-      table.datetime('some_time', { precision: 6 }).defaultTo(knex.fn.now(6));
+      table.datetime('created', { precision: 6 }).defaultTo(knex.fn.now(6));
     })
 };
 
