@@ -4,9 +4,12 @@
   "description": "A simple Node.js app with Nginx and MySQL",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node --env-file=.env app.js",
+    "dev": "nodemon --env-file=.env app.js"
   },
   "dependencies": {
+    "nodemon": "3.1.4",
+    "winston": "3.14.1",
     "openai": "4.55.4",
     "dotenv": "16.4.5",
     "ejs": "3.1.10",

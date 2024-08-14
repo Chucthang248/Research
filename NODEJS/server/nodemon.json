@@ -1,0 +1,16 @@
+{
+    "restartable": "rs",
+    "ignore": ["logs/*", "node_modules/*"],
+    "delay": "2500",
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "watch": ["./"],
+    "ext": "js,json",
+    "exec": "node --trace-deprecation",
+    "legacy-watch": false,
+    "events": {
+      "crash": "echo 'App crashed! Restarting...' && sleep 2 && rs"
+    }
+  }
+  

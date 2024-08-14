@@ -1,6 +1,8 @@
-// server/controllers/homeController.js
+const  {orgAndProject}  = require('../helpers/open-ai');
 
 exports.renderHomePage = (req, res) => {
-    res.render('index', { title: 'Home Page', message: 'Home Page' });
+    // const openaiClient = orgAndProject();
+    console.log("openaiClient");
+    res.render('index', { title: 'Home Page', messages: 'Home Page 2' });
 };
   
