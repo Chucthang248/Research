@@ -10,14 +10,20 @@ const createFeatureLogger = (featureName, customFileName, level) => {
         return `${timestamp} [${level}]: ${message}`;
     });
 
+    let transportsType = [
+        new transports.File({ filename: path.join(`logs/${featureName}/${logInfo}.log`), level: 'info' }),
+        new transports.File({ filename: path.join(`logs/${featureName}/${logError}.log`), level: 'error' })
+    ]
+
     // if user custom file log for test
     if (customFileName && level) {
         switch (level) {
             case 'info':
-                logInfo = customFileName;
+                transportsType = [new transports.File({ filename: path.join(`logs/${featureName}/${customFileName}.log`), level: 'info' })];
                 break;
             case 'error':
                 logError = customFileName;
+                transportsType = [new transports.File({ filename: path.join(`logs/${featureName}/${customFileName}.log`), level: 'error' })];
                 break;
             default:
                 break;
@@ -30,10 +36,7 @@ const createFeatureLogger = (featureName, customFileName, level) => {
             timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
             logFormat
         ),
-        transports: [
-            new transports.File({ filename: path.join(`logs/${featureName}/${logInfo}.log`), level: 'info' }),
-            new transports.File({ filename: path.join(`logs/${featureName}/${logError}.log`), level: 'error' })
-        ],
+        transports: transportsType,
         exceptionHandlers: [
             new transports.File({ filename: path.join(`logs/${featureName}/exceptions.log`) })
         ]

@@ -10,6 +10,7 @@ services:
       - /usr/src/app/node_modules
     ports:
       - "8828:3000"
+      - "9229:9229"  # Thêm dòng này để chuyển tiếp cổng debugger
     depends_on:
       - dbeng
     environment:

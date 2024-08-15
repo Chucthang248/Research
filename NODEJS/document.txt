@@ -16,3 +16,5 @@ $ knex migrate:up
 $ knex migrate:up 001_migration_name.js
 
 npx knex seed:make tb_multiple_choice
+
+nodemon: để nodemon restart khi file change thì cần thêm -L 

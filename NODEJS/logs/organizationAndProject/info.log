@@ -1,2 +1,5 @@
-2024-08-14 06:32:08 [error]: The OPENAI_API_KEY environment variable is missing or empty; either provide it, or instantiate the OpenAI client with an apiKey option, like new OpenAI({ apiKey: 'My API Key' }).
-2024-08-14 06:39:51 [error]: The OPENAI_API_KEY environment variable is missing or empty; either provide it, or instantiate the OpenAI client with an apiKey option, like new OpenAI({ apiKey: 'My API Key' }).
+2024-08-15 15:05:56 [info]: [object Object]
+2024-08-15 15:07:30 [error]: Converting circular structure to JSON
+    --> starting at object with constructor 'OpenAI'
+    |     property 'completions' -> object with constructor 'Completions'
+    --- property '_client' closes the circle

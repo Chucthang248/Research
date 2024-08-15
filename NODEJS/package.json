@@ -4,8 +4,7 @@
   "description": "A simple Node.js app with Nginx and MySQL",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon  app.js"
+    "start": "nodemon -L --inspect --watch src/ --watch app.js"
   },
   "dependencies": {
     "dotenv": "16.4.5",
