@@ -37,3 +37,6 @@ tl:
      2. docker cp tmp-nginx:/etc/nginx/conf.d/default.conf conf/nginx/server.conf
      3. docker cp tmp-nginx:/etc/php83/conf.d/settings.ini conf/php/settings.ini
      4. docker rm -f tmp-nginx
+
+
+     copy node_module container > host: docker cp your-container-name:/usr/src/app/node_modules ./node_modules

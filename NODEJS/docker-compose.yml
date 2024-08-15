@@ -3,10 +3,11 @@ version: '3.8'
 services:
   web-eng:
     build:
-      context: ./server
+      context: .
       dockerfile: Dockerfile
     volumes:
-      - ./server:/usr/src/app
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - "8828:3000"
     depends_on:

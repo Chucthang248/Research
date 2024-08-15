@@ -1,18 +1,17 @@
 const express = require('express');
 const path = require('path');
-const  {orgAndProject}  = require('./helpers/open-ai');
-const homeController = require('./controllers/homeController');
+const  {orgAndProject}  = require('./src/helpers/open-ai');
+const homeController = require('./src/controllers/homeController');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 console.log('==============openaiClient====================');
 // const openaiClient = orgAndProject();
-    console.log(process.env.OPENAI_ORGANIZATION_ID);
-console.log(path.join(__dirname, 'views'))
+    // console.log(process.env.OPENAI_ORGANIZATION_ID);
 // Set view engine
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'src/views'));
 
 // Routes
 app.get('/', homeController.renderHomePage);
