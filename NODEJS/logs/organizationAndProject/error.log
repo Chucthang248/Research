@@ -1,4 +1,0 @@
-2024-08-15 15:07:30 [error]: Converting circular structure to JSON
-    --> starting at object with constructor 'OpenAI'
-    |     property 'completions' -> object with constructor 'Completions'
-    --- property '_client' closes the circle

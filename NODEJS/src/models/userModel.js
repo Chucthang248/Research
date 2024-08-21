@@ -1,12 +1,34 @@
-const db = require('../config/db');
+const knex = require('../config/db');
 
-const getAllUsers = (callback) => {
-  db.query('SELECT * FROM users', (err, results) => {
-    if (err) {
-      return callback(err, null);
-    }
-    callback(null, results);
-  });
+const createUser = async (userData) => {
+  return knex('users').insert(userData);
 };
 
-module.exports = { getAllUsers };
+const findUserByEmail = async (email) => {
+  return knex('users').where({ email }).first();
+};
+
+const findUserByUsername = async (username) => {
+  return knex('users').where({ username }).first();
+};
+
+const findUserById = async (id) => {
+  return knex('users').where({ id }).first();
+};
+
+const updateUser = async (id, userData) => {
+  return knex('users').where({ id }).update(userData);
+};
+
+const deleteUser = async (id) => {
+  return knex('users').where({ id }).del();
+};
+
+module.exports = {
+  createUser,
+  findUserByEmail,
+  findUserByUsername,
+  findUserById,
+  updateUser,
+  deleteUser
+};
