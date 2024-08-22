@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const userModel = require('../models/userModel');
+const knex = require('../config/db');
 require('dotenv').config();
 
 const secretKey = process.env.SECRET_KEY;
@@ -63,10 +64,10 @@ exports.login = async (req, res) => {
 // API CRUD cho người dùng
 exports.getUsers = async (req, res) => {
   try {
-    const users = await knex('users').select('*');
+    const users = await userModel.getUsers();
     res.status(200).json({ status: 200, data: users });
   } catch (error) {
-    res.status(500).json({ status: 500, message: 'Lỗi server' });
+    res.status(500).json({ status: 500, message: error.message });
   }
 };
 

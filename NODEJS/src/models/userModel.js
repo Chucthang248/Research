@@ -1,5 +1,9 @@
 const knex = require('../config/db');
 
+const getUsers = async (id) => {
+  return knex('users').select('*');
+};
+
 const createUser = async (userData) => {
   return knex('users').insert(userData);
 };
@@ -30,5 +34,6 @@ module.exports = {
   findUserByUsername,
   findUserById,
   updateUser,
-  deleteUser
+  deleteUser,
+  getUsers
 };
