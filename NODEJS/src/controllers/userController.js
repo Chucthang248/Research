@@ -33,7 +33,7 @@ exports.register = async (req, res) => {
 
     res.status(201).json({ status: 201, message: 'Đăng ký thành công' });
   } catch (error) {
-    res.status(500).json({ status: 500, message: 'Lỗi server' });
+    res.status(500).json({ status: 500, message: error.message});
   }
 };
 
@@ -57,7 +57,7 @@ exports.login = async (req, res) => {
 
     res.status(200).json({ status: 200, message: 'Đăng nhập thành công', tokens });
   } catch (error) {
-    res.status(500).json({ status: 500, message: 'Lỗi server' });
+    res.status(500).json({ status: 500, message: secretKey });
   }
 };
 
