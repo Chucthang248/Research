@@ -2,19 +2,29 @@ mysql: https://hub.docker.com/_/mysql
 knex migrate database: https://knexjs.org/ 
 1. npm install knex sqlite3
 2. npx knex init
-3. npx knex migrate:make tbl_users
+3. npx knex migrate:make tbl_tokens
 
 
-$ knex migrate:latest --env production
+$ npx knex migrate:latest --env production
 
-$ knex migrate:rollback
+$ npx knex migrate:rollback
 
-$ knex migrate:rollback --all
+$ npx knex migrate:rollback --all
 
-$ knex migrate:up
+$ npx knex migrate:up
 
-$ knex migrate:up 001_migration_name.js
+$ npx knex migrate:up 001_migration_name.js
 
 npx knex seed:make tb_multiple_choice
 
 nodemon: để nodemon restart khi file change thì cần thêm -L 
+
+npx knex migrate:make tbl_users
+npx knex migrate:make tbl_tokens
+
+npx knex migrate:make tbl_profiles
+npx knex migrate:make tbl_posts
+npx knex migrate:make tbl_comments
+npx knex migrate:make tbl_followers
+
+npx knex seed:run
