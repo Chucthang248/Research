@@ -4,7 +4,11 @@
           run (check if work): laravel --version 
           run: composer install
           run: chmod -R 775 storage bootstrap/cache
+               
                chown -R www-data:www-data /var/www/html
           run: php artisan key:generate
 
 research: https://chatgpt.com/g/g-p-6785c655a4b48191a9a5a0e66190ef96-laravel-test/c/6785d845-7028-8000-b14a-e75621c66570
+
+chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
