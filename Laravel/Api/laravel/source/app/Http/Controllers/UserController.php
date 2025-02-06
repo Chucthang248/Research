@@ -13,8 +13,13 @@ class UserController extends Controller
     // API lấy danh sách tất cả users
     public function getAllUsers()
     {
+
         // Kiểm tra cache Redis trước
-        $users = Cache::remember('users', 60, function () {
+        // $users = Cache::remember('users', 3000, function () {
+        //     return User::all();
+        // });
+
+        $users = Cache::get('users', function () {
             return User::all();
         });
 
