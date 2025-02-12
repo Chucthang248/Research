@@ -1,0 +1,36 @@
+mysql: https://hub.docker.com/_/mysql
+knex migrate database: https://knexjs.org/ 
+1. npm install knex sqlite3
+2. npx knex init
+3. npx knex migrate:make tbl_tokens
+
+
+$ npx knex migrate:latest --env production
+
+$ npx knex migrate:rollback
+
+$ npx knex migrate:rollback --all
+
+$ npx knex migrate:up
+
+$ npx knex migrate:up 001_migration_name.js
+
+npx knex seed:make tb_multiple_choice
+
+nodemon: để nodemon restart khi file change thì cần thêm -L 
+
+npx knex migrate:make tbl_users
+npx knex migrate:make tbl_tokens
+
+npx knex migrate:make tbl_profiles
+npx knex migrate:make tbl_posts
+npx knex migrate:make tbl_comments
+npx knex migrate:make tbl_followers
+
+npx knex seed:run
+
+-------------------------------
+khi sửa code mà code không thay đổi trong container thì:
+b1: sử dụng nodemon thay vì node
+b2: thêm  "dev": "nodemon --legacy-watch app.js" trong scripts package.json
+b3: sửa CMD trong Dockerfile thành: CMD ["npm", "run", "dev"]
