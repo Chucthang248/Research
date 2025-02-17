@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  php-bookreview:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/html
+      - anonymous-vendor:/var/www/html/src/vendor # chặn mount vendor giữa host và container
+    depends_on:
+      - redis
+      - db-bookreview
+    networks:
+      - app-network
+
+  nginx-bookreview:
+    image: nginx:latest
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www/html
+    ports:
+      - "8090:80"
+    depends_on:
+      - php-bookreview
+    networks:
+      - app-network
+
+  db-bookreview:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel-bookreview
+      MYSQL_USER: laravel-bookreview
+      MYSQL_PASSWORD: laravel-bookreview
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8091:8080
+    networks:
+      - app-network
+
+  redis:
+    image: redis:latest
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+  anonymous-vendor:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,19 +1,30 @@
+STEP1:
+- tắt ./anonymous-vendor:/var/www/html/src/vendor
+- build PHP, Nginx, DB 
+
+STEP2:
+- access container PHP 
+- cài laravel
+
+STEP3
+- stop PHP service
+- bật anonymous-vendor:/var/www/html/src/vendor 
+- start lại service PHP 
+
+--------------------------------------------------------
+composer: composer create-project --prefer-dist laravel/laravel src
+
 1: access container PHP: 
           run: composer global require laravel/installer
           run: export PATH="$PATH:$HOME/.composer/vendor/bin"
           run (check if work): laravel --version 
           run: composer install
           run: chmod -R 775 storage bootstrap/cache
-               
                chown -R www-data:www-data /var/www/html
+
           run: php artisan key:generate
 
-research: https://chatgpt.com/g/g-p-6785c655a4b48191a9a5a0e66190ef96-laravel-test/c/6785d845-7028-8000-b14a-e75621c66570
-
-chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
------------------------ TESTING --------------------------
+----------------------- UNIT TESTING --------------------------
 tạo test: php artisan make:test DeleteUserTest
 
 chạy tất cả các bài kiểm tra trong các file: php artisan test
@@ -27,3 +38,11 @@ test với group:
      * @group delete
      */
 2. chạy lệnh php artisan test --group=register,delete
+
+------------------------ COMMAND -------------------------------
+tạo model: php artisan make:model [table name] [-m (tao migration)]
+chay migration: php artisan migrate:refresh
+chay migration sau khi them foreign key (luu y: xoa toan bo table va tao moi): php artisan migrate:refresh
+                                                                               php artisan migrate:refresh --seed
+chạy dữ liệu mẫu: php artisan make:factory BookFactory --model=Book
+                  php artisan make:factory ReviewFactory --model=Review
