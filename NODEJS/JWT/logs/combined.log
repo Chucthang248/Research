@@ -1,0 +1,10 @@
+2025-02-12 05:26:33 [ERROR]: knex is not defined
+2025-02-12 05:30:13 [INFO]: Đăng ký user: user1, email: user1@example.com
+2025-02-12 05:30:13 [ERROR]: Lỗi đăng ký: bcrypt is not defined
+2025-02-12 05:30:36 [INFO]: Đăng ký user: user1, email: user1@example.com
+2025-02-12 08:11:55 [ERROR]: Lỗi login: knex is not defined
+2025-02-12 08:12:04 [ERROR]: Lỗi login: knex is not defined
+2025-02-12 08:15:51 [ERROR]: [object Object]
+2025-02-12 08:21:23 [ERROR]: [object Object]
+2025-02-12 08:28:08 [ERROR]: invalid signature
+2025-02-12 08:30:12 [ERROR]: Cannot read properties of null (reading 'message')

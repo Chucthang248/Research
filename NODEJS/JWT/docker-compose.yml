@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  dbjwt:
+    image: mysql:8.0
+    container_name: dbjwt
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: nodejwt
+      MYSQL_USER: nodeuser
+      MYSQL_PASSWORD: nodepassword
+    ports:
+      - "3314:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  adminerjwt:
+    image: adminer
+    container_name: adminerjwt
+    restart: always
+    ports:
+      - "8082:8080"
+    volumes:
+      - adminer_data:/var/lib/adminer
+
+  webjwt:
+    build: .
+    container_name: webjwt
+    restart: always
+    ports:
+      - "3024:3000"  # Ứng dụng Nodejs chạy trên cổng 3000 bên trong container
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - dbjwt
+    env_file:
+      - .env
+
+volumes:
+  db_data:
+  adminer_data:
