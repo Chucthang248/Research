@@ -1,3 +1,5 @@
+git: https://github.com/piotr-jura-udemy/laravel-course-2023
+
 STEP1:
 - tắt ./anonymous-vendor:/var/www/html/src/vendor
 - build PHP, Nginx, DB 
@@ -30,6 +32,7 @@ tạo test: php artisan make:test DeleteUserTest
 chạy tất cả các bài kiểm tra trong các file: php artisan test
 Chạy tất cả các bài kiểm tra trong file xác định: php artisan test --filter=DeleteUserTest
 Nếu bạn muốn chỉ chạy một bài kiểm tra cụ thể (ví dụ: it_deletes_a_user_successfully): php artisan test --filter="DeleteUserTest::it_deletes_a_user_successfully"
+tạo controller: php artisan make:controller BookController --resource 
 
 test với group:
 1. thêm @group vào comment function:
