@@ -21,10 +21,10 @@
     <h2 class="mb-4 text-xl font-semibold">Reviews</h2>
     <ul>
       @forelse ($book->reviews as $review)
-        <li class="book-item mb-4">
+        <li class="book-item mb-4" data-id="{{ $review->id }}">
           <div>
             <div class="mb-2 flex items-center justify-between">
-              <div class="font-semibold">{{ $review->rating }}</div>
+              <div class="font-semibold"> rating: {{ $review->rating }}</div>
               <div class="book-review-count">
                 {{ $review->created_at->format('M j, Y') }}</div>
             </div>
