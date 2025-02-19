@@ -33,6 +33,8 @@ class BookController extends Controller
             return $books->get();
         });
 
+        //$books = $books->get();
+
         return view('books.index', ['books' => $books]);
     }
 
