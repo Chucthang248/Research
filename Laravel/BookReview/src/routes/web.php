@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +16,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('books.index');
 });
 
+Route::middleware('throttle:books')->group(function () {
+    
+});
 
-Route::resource('books', BookController::class);
+Route::resource('books', BookController::class)
+->only(['index', 'show']);
+
+// Rate limit request 
+// Route::middleware('throttle:reviews')->group(function () {
+//     Route::resource('books.reviews', ReviewController::class)
+//     ->scoped(['review' => 'book'])
+//     ->only(['create', 'store']);
+// });
+
+Route::resource('books.reviews', ReviewController::class)
+->scoped(['review' => 'book'])
+->only(['create', 'store']);

@@ -50,5 +50,4 @@ chay migration sau khi them foreign key (luu y: xoa toan bo table va tao moi): p
 chạy dữ liệu mẫu: php artisan make:factory BookFactory --model=Book
                   php artisan make:factory ReviewFactory --model=Review
 
-
-https://tuyendung.hasaki.vn/apply/817
+docker exec -it restapi-php-rest-api-1 bash
