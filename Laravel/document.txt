@@ -42,12 +42,26 @@ test với group:
      */
 2. chạy lệnh php artisan test --group=register,delete
 
------------------------- COMMAND -------------------------------
+------------------------ MODEL/MIGRATE -------------------------------
 tạo model: php artisan make:model [table name] [-m (tao migration)]
+           php artisan make:model attendees -m
+           php artisan make:model events -m
 chay migration: php artisan migrate:refresh
 chay migration sau khi them foreign key (luu y: xoa toan bo table va tao moi): php artisan migrate:refresh
                                                                                php artisan migrate:refresh --seed
 chạy dữ liệu mẫu: php artisan make:factory BookFactory --model=Book
                   php artisan make:factory ReviewFactory --model=Review
+                  php artisan make:factory EventFactory --model=Event
+
+
+                  php artisan make:seeder EventSeeder
+                  php artisan make:seeder AttendeeSeeder
 
 docker exec -it restapi-php-rest-api-1 bash
+
+
+------------------------ CONTROLLERS / RESOURCE---------------------------------------
+php artisan make:controller Api/AttendeeController --api
+php artisan make:controller Api/EventController --api
+
+php artisan make:resource EventResource
