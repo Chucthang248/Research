@@ -40,6 +40,7 @@ class EventController extends Controller
      */
     public function show(\App\Models\Event $event)
     {
+        $event->load('user');
         return new EventResource($event);
     }
 

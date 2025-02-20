@@ -65,3 +65,4 @@ php artisan make:controller Api/AttendeeController --api
 php artisan make:controller Api/EventController --api
 
 php artisan make:resource EventResource
+php artisan make:resource AttendeeResource

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Attendee;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,6 +23,7 @@ class EventResource extends JsonResource
             'start_time' => $this->start_time,
             'end_time' => $this->end_time,
             'user' => new UserResource($this->whenLoaded('user')),
+            'attendees' => AttendeeResource::collection($this->whenLoaded('attendee'))
         ];
     }
 }
