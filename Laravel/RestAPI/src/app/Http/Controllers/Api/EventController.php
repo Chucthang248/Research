@@ -14,7 +14,19 @@ class EventController extends Controller
      */
     public function index()
     {
-        return EventResource::collection(Event::with('user')->get());
+        $query = Event::query();
+        $relations = ['user', 'attendee', 'attendee.user'];
+
+        foreach ($relations as $relation) {
+            $query->when(
+                $this->shouldIncludeRelation($relation), 
+                fn($q) => $q->with($relation)
+            );
+        }
+
+        //return EventResource::collection(Event::with('user')->paginate());
+        //return EventResource::collection($query->latest()->paginate());
+        return $query->latest();
     }
 
     /**
@@ -29,7 +41,7 @@ class EventController extends Controller
                 'start_time' => 'required|date',
                 'end_time' => 'required|date|after:start_time',
             ]),
-            'user_id' => 2
+            'user_id' => $request->user_id
         ]);
 
         return new EventResource($event);
@@ -40,7 +52,7 @@ class EventController extends Controller
      */
     public function show(\App\Models\Event $event)
     {
-        $event->load('user');
+        $event->load('user', 'attendee');
         return new EventResource($event);
     }
 
@@ -70,5 +82,18 @@ class EventController extends Controller
         return response()->json([
             'message' => 'Event delete successful !'
         ]);
+    }
+
+    protected function shouldIncludeRelation(string $relation) 
+    {
+        $include = request()->query('include');
+
+        if (!$include) {
+            return false;
+        }
+
+        $relation = array_map('trim', explode(',', $include));
+
+        return in_array($relation, $relation);
     }
 }
