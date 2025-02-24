@@ -5,28 +5,26 @@ namespace App\Http\Controllers\Api;
 use App\Http\Resources\EventResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Traits\CanLoadRelationship;
 use App\Models\Event;
 
 class EventController extends Controller
 {
+
+    use CanLoadRelationship;
+
+    private array $relations = ['user', 'attendee', 'attendee.user'];
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $query = Event::query();
-        $relations = ['user', 'attendee', 'attendee.user'];
+        
 
-        foreach ($relations as $relation) {
-            $query->when(
-                $this->shouldIncludeRelation($relation), 
-                fn($q) => $q->with($relation)
-            );
-        }
+        $this->loadRelationships($query, $this->relations);
 
-        //return EventResource::collection(Event::with('user')->paginate());
-        //return EventResource::collection($query->latest()->paginate());
-        return $query->latest();
+        return EventResource::collection($query->latest()->paginate());
     }
 
     /**
@@ -44,7 +42,7 @@ class EventController extends Controller
             'user_id' => $request->user_id
         ]);
 
-        return new EventResource($event);
+        return new EventResource($this->loadRelationships($event, null));
     }
 
     /**
@@ -53,7 +51,7 @@ class EventController extends Controller
     public function show(\App\Models\Event $event)
     {
         $event->load('user', 'attendee');
-        return new EventResource($event);
+        return new EventResource($this->loadRelationships($event, null));
     }
 
     /**
@@ -84,16 +82,5 @@ class EventController extends Controller
         ]);
     }
 
-    protected function shouldIncludeRelation(string $relation) 
-    {
-        $include = request()->query('include');
 
-        if (!$include) {
-            return false;
-        }
-
-        $relation = array_map('trim', explode(',', $include));
-
-        return in_array($relation, $relation);
-    }
 }
