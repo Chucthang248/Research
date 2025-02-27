@@ -1,0 +1,8 @@
+php -a	Mở PHP Interactive Mode để nhập lệnh PHP trực tiếp.
+CMD ["php", "-a"]	Khi container chạy, nó sẽ tự động vào chế độ PHP Interactive Mode.
+CMD ["php", "/app/main.php"]	Khi container chạy, nó sẽ thực thi file main.php.
+CMD ["bash"]	Khi container chạy, nó mở terminal (bash shell).
+----------------------------------------------------------------------
+
+cho CMD ["bash"]
+docker run -it --rm php-exercises

@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/var/www/html
-      - anonymous-vendor:/var/www/html/src/vendor # chặn mount vendor giữa host và container
+      #- anonymous-vendor:/var/www/html/src/vendor # chặn mount vendor giữa host và container
     depends_on:
       - db-rest-api
     networks:
