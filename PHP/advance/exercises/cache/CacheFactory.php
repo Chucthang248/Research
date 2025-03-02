@@ -1,15 +1,15 @@
 <?php 
- require_once 'MyFiles.php';
- require_once 'MyMemcached.php';
+ require_once 'FileCache.php';
+ require_once 'MemcachedCache.php';
 
- class MyCache {
+ class CacheFactory {
     protected $instance;
 
     public function __construct() {
         
         $drivers = [
-            'Files' => MyFiles::class,
-            'Memcached' => MyMemcached::class
+            'Files' => FileCache::class,
+            'Memcached' => MemcachedCache::class
         ];
 
         if (!isset($drivers[getenv('CACHE')])) {

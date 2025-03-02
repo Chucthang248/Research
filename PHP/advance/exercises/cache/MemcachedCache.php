@@ -1,8 +1,8 @@
 <?php 
 require_once 'CacheProcess.php';
 
-class MyFiles extends CacheProcess {
-    
+class MemcachedCache extends CacheProcess {
+
     public function __construct(){}
 
     public function set($key, $value) {
@@ -10,7 +10,7 @@ class MyFiles extends CacheProcess {
     }
 
     public function get($key) {
-        echo "Files get: " . $key;
+        echo "Memcached get: " . $key;
     }
         
 }
