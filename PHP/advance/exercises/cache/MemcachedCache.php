@@ -1,7 +1,7 @@
 <?php 
-require_once 'CacheProcess.php';
+require_once 'Cache.php';
 
-class MemcachedCache extends CacheProcess {
+class MemcachedCache implements  Cache {
 
     public function __construct(){}
 

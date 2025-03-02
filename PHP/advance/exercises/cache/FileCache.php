@@ -1,7 +1,7 @@
 <?php 
-require_once 'CacheProcess.php';
+require_once 'Cache.php';
 
-class FileCache extends CacheProcess {
+class FileCache implements Cache {
     
     public function __construct(){}
 
