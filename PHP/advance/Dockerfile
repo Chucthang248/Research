@@ -1,11 +1,15 @@
-# Sử dụng PHP CLI
 FROM php:8.1-cli
 
-# Đặt thư mục làm việc bên trong container
-WORKDIR /app
+RUN apt-get update && apt-get install -y \
+    libmemcached-dev \
+    zlib1g-dev \
+    libsasl2-dev \
+    libssl-dev \
+    pkg-config \
+    && pecl install memcached \
+    && docker-php-ext-enable memcached
 
-# Copy toàn bộ thư mục bài tập vào container
+WORKDIR /app
 COPY . /app
 
-# Giữ container chạy và cho phép truy cập vào terminal
-CMD ["bash"]
+CMD ["php", "-S", "0.0.0.0:8000", "-t", "/app"]
