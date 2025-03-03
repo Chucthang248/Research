@@ -7,6 +7,7 @@ CMD ["bash"]	Khi container chạy, nó mở terminal (bash shell).
 docker build -t advance .
 docker-compose run --rm php   
 php exercises/cache/index.php
+php exercises/logger/index.php
 php exercises/difference/include_require/index_require_once.php
 php exercises/difference/include_require/index_include_once.php
 php exercises/difference/include_require/index_require.php
