@@ -16,15 +16,15 @@
             throw new Exception("Cache driver không hợp lệ: " . getenv('CACHE'));
         }
 
-        $cacheType = getenv('CACHE') ?: 'Memcached'; // Mặc định là Memcached
-        $this->instance = new $drivers[$cacheType](); // Khởi tạo đúng class
+        $cacheType = getenv('CACHE') ?: 'Memcached';
+        $this->instance = new $drivers[$cacheType]();
     }
 
     public function set($key, $value) {
-        return $this->instance->set($key, $value); // ✅ Ủy quyền
+        return $this->instance->set($key, $value);
     }
 
     public function get($key) {
-        return $this->instance->get($key); // ✅ Ủy quyền
+        return $this->instance->get($key);
     }
 }
