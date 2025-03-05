@@ -5,7 +5,7 @@ STEP1:
 - build PHP, Nginx, DB 
 
 STEP2:
-- access container PHP 
+- access container PHP: docker exec -it restapi-php-rest-api-1 bash
 - cài laravel
 
 STEP3
