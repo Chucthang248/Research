@@ -5,6 +5,7 @@
    + INFO - Thông tin chung về hệ thống.
    + WARN - Cảnh báo nhưng không ảnh hưởng ngay đến hệ thống.
    + ERROR - Lỗi nghiêm trọng nhưng hệ thống vẫn có thể tiếp tục chạy.
+   
 2. Thông tin log cần ghi nhận (Log Fields)
 - Timestamp: Thời gian xảy ra sự kiện.
 - Log Level: Mức độ log.
@@ -12,19 +13,13 @@
 - Context/Metadata: Thông tin bổ sung (request ID, user ID, IP, module).
 - Source: Vị trí mã nguồn phát sinh log (file, dòng code).
 - Stack Trace (nếu có lỗi): Chi tiết về lỗi giúp debug nhanh hơn.
-3. Định dạng log (Log Formatting)
-- Plain text: Dễ đọc nhưng khó phân tích tự động.
-- JSON: Dễ dàng lưu trữ và xử lý bằng hệ thống log tập trung.
-- Structured Logging: Định dạng log có cấu trúc, dễ dàng phân tích và tìm kiếm.
+
 4. Cơ chế lưu trữ log (Log Storage)
 - Console Logging: Ghi log trực tiếp ra terminal (thường dùng khi dev).
 - File Logging: Lưu trữ log vào file trên máy chủ.
 - Database Logging: Lưu log vào database để truy vấn và phân tích.
 - Cloud Logging: Gửi log đến các dịch vụ như ELK Stack, Grafana Loki, AWS CloudWatch.
-5. Cơ chế luồng log (Log Pipeline)
-- Log Rotation: Cơ chế quay vòng log (log cũ sẽ bị xóa/lưu trữ định kỳ).
-- Log Aggregation: Thu thập log từ nhiều dịch vụ về một nơi tập trung.
-- Log Forwarding: Gửi log đến các hệ thống giám sát hoặc cloud.
+
 6. Cảnh báo từ log (Alerting & Monitoring)
 - Gửi cảnh báo qua email, Slack, Telegram,...
 7. Quyền truy cập log (Log Security)
