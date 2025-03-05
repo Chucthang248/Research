@@ -10,20 +10,24 @@
         $this->storage = StorageFactory::make($config);
     }
 
+    protected function log($level, $content) {
+        $this->storage->write($content, $level);
+    }
+
     public function debug($content) {
-        $this->storage->write($content, 'debug');
+        $this->log($content, 'debug');
     }
 
     public function info($content) {
-        $this->storage->write($content, 'info');
+        $this->log($content, 'info');
     }
 
     public function warn($content) {
-        $this->storage->write($content, 'warn');
+        $this->log($content, 'warn');
     }
 
     public function error($content) {
-        $this->storage->write($content, 'error');
+        $this->log($content, 'error');
     }
 
 
