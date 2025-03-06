@@ -5,26 +5,15 @@
  class CacheFactory {
     protected $instance;
 
-    public function __construct() {
-        
-        $drivers = [
-            'Files' => FileCache::class,
-            'Memcached' => MemcachedCache::class
-        ];
+    public static function make() {
 
-        if (!isset($drivers[getenv('CACHE')])) {
-            throw new Exception("Cache driver không hợp lệ: " . getenv('CACHE'));
+        switch (getenv('CACHE')) {
+            case 'cloud':
+                return new FileCache();
+            case 'file':
+                return new MemcachedCache();
+            default:
+                throw new Exception("Cache driver không hợp lệ");
         }
-
-        $cacheType = getenv('CACHE') ?: 'Memcached';
-        $this->instance = new $drivers[$cacheType]();
-    }
-
-    public function set($key, $value) {
-        return $this->instance->set($key, $value);
-    }
-
-    public function get($key) {
-        return $this->instance->get($key);
     }
 }

@@ -1,5 +1,5 @@
 <?php 
 
 interface LogStorage {
-    public function write($content, $logLevel);
+    public function write($content, $level);
 }

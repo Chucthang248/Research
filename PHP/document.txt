@@ -13,6 +13,7 @@ php exercises/difference/include_require/index_include_once.php
 php exercises/difference/include_require/index_require.php
 php exercises/difference/include_require/index_include.php
 
+docker exec -it php-advance bash
 ----------------------------------------------------------------------
 $memcached = new Memcached();
 $memcached->addServer(getenv('CACHE_MEMCACHED_HOST'), getenv('CACHE_MEMCACHED_PORT'));

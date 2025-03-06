@@ -9,9 +9,9 @@ use function PHPUnit\Framework\throwException;
     public static function make($config = null) {
         switch (getenv('LOG_SYSTEM')) {
             case 'cloud':
-                return new CloudStorage();
+                return new CloudStorage($config);
             case 'file':
-                return new FileStorage($config['path'] . '/' . $config['fileName']);
+                return new FileStorage($config);
             default:
                 throw new Exception("LOG_SYSTEM chưa được cài đặt");
         }
