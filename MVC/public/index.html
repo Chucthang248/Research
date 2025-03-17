@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP MVC RESTful API</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@3/swagger-ui.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #2C3E50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .btn {
+            background-color: #3498DB;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PHP MVC RESTful API with JWT Authentication</h1>
+        <p>A production-ready MVC framework with RESTful API and JWT authentication</p>
+    </div>
+    <div class="container">
+        <h2>API Documentation</h2>
+        <div id="swagger-ui"></div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@3/swagger-ui-bundle.js"></script>
+    <script>
+        window.onload = function() {
+            // Get the current host with port
+            const currentHost = window.location.origin;
+            
+            const ui = SwaggerUIBundle({
+                url: currentHost + "/api-docs/swagger.json",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "BaseLayout",
+                // Add server configuration
+                requestInterceptor: (req) => {
+                    // Make sure requests go to the right host with port
+                    if (req.url.startsWith('/')) {
+                        req.url = currentHost + req.url;
+                    }
+                    return req;
+                }
+            });
+            window.ui = ui;
+        };
+    </script>
+</body>
+</html>
